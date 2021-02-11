@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0E0DB13F25D4EC76005D77E9 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DB13E25D4EC76005D77E9 /* DetailPresenter.swift */; };
+		0E0DB14425D506E5005D77E9 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DB14325D506E5005D77E9 /* DownloadManager.swift */; };
 		0E5B05B525D4A90E00D774F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05B425D4A90E00D774F0 /* AppDelegate.swift */; };
 		0E5B05B925D4A90E00D774F0 /* HomeMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05B825D4A90E00D774F0 /* HomeMainPresenter.swift */; };
 		0E5B05C125D4A90F00D774F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B05C025D4A90F00D774F0 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		0E0DB13E25D4EC76005D77E9 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		0E0DB14325D506E5005D77E9 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		0E5B05B125D4A90E00D774F0 /* FDJ_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FDJ_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5B05B425D4A90E00D774F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E5B05B825D4A90E00D774F0 /* HomeMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainPresenter.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				0E5B05F625D4B0B800D774F0 /* League.swift */,
 				0E5B05FF25D4BB1F00D774F0 /* Team.swift */,
+				0E0DB14325D506E5005D77E9 /* DownloadManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				0E5B060025D4BB1F00D774F0 /* Team.swift in Sources */,
 				0E5B05B525D4A90E00D774F0 /* AppDelegate.swift in Sources */,
 				0E0DB13F25D4EC76005D77E9 /* DetailPresenter.swift in Sources */,
+				0E0DB14425D506E5005D77E9 /* DownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
