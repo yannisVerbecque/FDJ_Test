@@ -14,6 +14,7 @@
 		0E5B05C425D4A90F00D774F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B05C225D4A90F00D774F0 /* LaunchScreen.storyboard */; };
 		0E5B05CF25D4A90F00D774F0 /* FDJ_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05CE25D4A90F00D774F0 /* FDJ_TestTests.swift */; };
 		0E5B05DA25D4A90F00D774F0 /* FDJ_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05D925D4A90F00D774F0 /* FDJ_TestUITests.swift */; };
+		0E5B05F725D4B0B800D774F0 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05F625D4B0B800D774F0 /* League.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		0E5B05D525D4A90F00D774F0 /* FDJ_TestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FDJ_TestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5B05D925D4A90F00D774F0 /* FDJ_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDJ_TestUITests.swift; sourceTree = "<group>"; };
 		0E5B05DB25D4A90F00D774F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E5B05F625D4B0B800D774F0 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		0E5B05B325D4A90E00D774F0 /* FDJ_Test */ = {
 			isa = PBXGroup;
 			children = (
+				0E5B05FB25D4B0BD00D774F0 /* Model */,
 				0E5B05B425D4A90E00D774F0 /* AppDelegate.swift */,
 				0E5B05B825D4A90E00D774F0 /* ViewController.swift */,
 				0E5B05C025D4A90F00D774F0 /* Assets.xcassets */,
@@ -123,6 +126,14 @@
 				0E5B05DB25D4A90F00D774F0 /* Info.plist */,
 			);
 			path = FDJ_TestUITests;
+			sourceTree = "<group>";
+		};
+		0E5B05FB25D4B0BD00D774F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B05F625D4B0B800D774F0 /* League.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,6 +267,7 @@
 			files = (
 				0E5B05BF25D4A90E00D774F0 /* FDJ_Test.xcdatamodeld in Sources */,
 				0E5B05B925D4A90E00D774F0 /* ViewController.swift in Sources */,
+				0E5B05F725D4B0B800D774F0 /* League.swift in Sources */,
 				0E5B05B525D4A90E00D774F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
