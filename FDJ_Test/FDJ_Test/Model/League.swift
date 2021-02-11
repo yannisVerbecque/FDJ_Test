@@ -10,7 +10,7 @@ import Foundation
 struct League: Decodable {
     let id: String
     let name: String
-    let alternateName: String
+    let alternateName: String?
     let sport: String
     
     enum CodingKeys: String, CodingKey {
@@ -20,11 +20,8 @@ struct League: Decodable {
         case sport = "strSport"
     }
     
-    func getNameLeagueForURL() -> String {
-        if let urlString = self.alternateName.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-            return urlString
-        } else {
-            return self.alternateName.replacingOccurrences(of: " ", with: "%20")
-        }
-    }
+}
+
+struct LeagueRequest: Decodable {
+    let leagues: [League]
 }

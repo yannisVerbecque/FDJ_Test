@@ -8,19 +8,19 @@
 import Foundation
 
 protocol DetailViewPresenter {
-    init(view: DetailView, team: Team)
+    init(view: DetailViewable, team: Team)
     func getTeam()
 }
 
 class DetailPresenter: DetailViewPresenter {
-    unowned let view: DetailView
+    unowned let view: DetailViewable
     let team: Team
     
     func getTeam() {
         self.view.setTeam(self.team)
     }
     
-    required init(view: DetailView, team: Team) {
+    required init(view: DetailViewable, team: Team) {
         self.view = view
         self.team = team
     }

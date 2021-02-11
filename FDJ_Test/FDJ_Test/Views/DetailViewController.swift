@@ -14,11 +14,11 @@ protocol Viewable: class {
     func setConstraints()
 }
 
-protocol DetailView: Viewable {
+protocol DetailViewable: Viewable {
     func setTeam(_ team: Team)
 }
 
-class DetailViewController: UIViewController, DetailView {
+class DetailViewController: UIViewController, DetailViewable {
     
     // UI Elements
     var scrollView: UIScrollView = {

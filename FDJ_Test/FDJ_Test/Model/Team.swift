@@ -26,3 +26,7 @@ struct Team: Decodable {
         case description = "strDescriptionEN"
     }
 }
+
+struct TeamRequest: Decodable {
+    let teams: [Team]
+}
