@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0E5B05B525D4A90E00D774F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05B425D4A90E00D774F0 /* AppDelegate.swift */; };
-		0E5B05B925D4A90E00D774F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05B825D4A90E00D774F0 /* ViewController.swift */; };
-		0E5B05BF25D4A90E00D774F0 /* FDJ_Test.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05BD25D4A90E00D774F0 /* FDJ_Test.xcdatamodeld */; };
+		0E5B05B925D4A90E00D774F0 /* HomeMainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05B825D4A90E00D774F0 /* HomeMainPresenter.swift */; };
 		0E5B05C125D4A90F00D774F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B05C025D4A90F00D774F0 /* Assets.xcassets */; };
 		0E5B05C425D4A90F00D774F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E5B05C225D4A90F00D774F0 /* LaunchScreen.storyboard */; };
 		0E5B05CF25D4A90F00D774F0 /* FDJ_TestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05CE25D4A90F00D774F0 /* FDJ_TestTests.swift */; };
 		0E5B05DA25D4A90F00D774F0 /* FDJ_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05D925D4A90F00D774F0 /* FDJ_TestUITests.swift */; };
 		0E5B05F725D4B0B800D774F0 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05F625D4B0B800D774F0 /* League.swift */; };
+		0E5B060025D4BB1F00D774F0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05FF25D4BB1F00D774F0 /* Team.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +37,7 @@
 /* Begin PBXFileReference section */
 		0E5B05B125D4A90E00D774F0 /* FDJ_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FDJ_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E5B05B425D4A90E00D774F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0E5B05B825D4A90E00D774F0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0E5B05BE25D4A90E00D774F0 /* FDJ_Test.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FDJ_Test.xcdatamodel; sourceTree = "<group>"; };
+		0E5B05B825D4A90E00D774F0 /* HomeMainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainPresenter.swift; sourceTree = "<group>"; };
 		0E5B05C025D4A90F00D774F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E5B05C325D4A90F00D774F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E5B05C525D4A90F00D774F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		0E5B05D925D4A90F00D774F0 /* FDJ_TestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDJ_TestUITests.swift; sourceTree = "<group>"; };
 		0E5B05DB25D4A90F00D774F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E5B05F625D4B0B800D774F0 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
+		0E5B05FF25D4BB1F00D774F0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +99,13 @@
 		0E5B05B325D4A90E00D774F0 /* FDJ_Test */ = {
 			isa = PBXGroup;
 			children = (
+				0E950D4C25D4C3A9006854A2 /* Presenter */,
+				0E950D4B25D4C39C006854A2 /* Views */,
 				0E5B05FB25D4B0BD00D774F0 /* Model */,
 				0E5B05B425D4A90E00D774F0 /* AppDelegate.swift */,
-				0E5B05B825D4A90E00D774F0 /* ViewController.swift */,
 				0E5B05C025D4A90F00D774F0 /* Assets.xcassets */,
 				0E5B05C225D4A90F00D774F0 /* LaunchScreen.storyboard */,
 				0E5B05C525D4A90F00D774F0 /* Info.plist */,
-				0E5B05BD25D4A90E00D774F0 /* FDJ_Test.xcdatamodeld */,
 			);
 			path = FDJ_Test;
 			sourceTree = "<group>";
@@ -132,8 +132,24 @@
 			isa = PBXGroup;
 			children = (
 				0E5B05F625D4B0B800D774F0 /* League.swift */,
+				0E5B05FF25D4BB1F00D774F0 /* Team.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		0E950D4B25D4C39C006854A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0E950D4C25D4C3A9006854A2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E5B05B825D4A90E00D774F0 /* HomeMainPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,9 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E5B05BF25D4A90E00D774F0 /* FDJ_Test.xcdatamodeld in Sources */,
-				0E5B05B925D4A90E00D774F0 /* ViewController.swift in Sources */,
+				0E5B05B925D4A90E00D774F0 /* HomeMainPresenter.swift in Sources */,
 				0E5B05F725D4B0B800D774F0 /* League.swift in Sources */,
+				0E5B060025D4BB1F00D774F0 /* Team.swift in Sources */,
 				0E5B05B525D4A90E00D774F0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -593,19 +609,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		0E5B05BD25D4A90E00D774F0 /* FDJ_Test.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0E5B05BE25D4A90E00D774F0 /* FDJ_Test.xcdatamodel */,
-			);
-			currentVersion = 0E5B05BE25D4A90E00D774F0 /* FDJ_Test.xcdatamodel */;
-			path = FDJ_Test.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0E5B05A925D4A90E00D774F0 /* Project object */;
 }

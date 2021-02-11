@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let window = UIWindow.init(frame: UIScreen.main.bounds)
 
-        let listVC = ViewController()
+        let listVC = HomeMainPresenter()
         let navViewController = UINavigationController(rootViewController: listVC)
         navViewController.view.translatesAutoresizingMaskIntoConstraints = false
         navViewController.navigationBar.prefersLargeTitles = true

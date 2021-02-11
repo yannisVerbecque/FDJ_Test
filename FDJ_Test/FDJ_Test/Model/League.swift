@@ -21,6 +21,10 @@ struct League: Decodable {
     }
     
     func getNameLeagueForURL() -> String {
-        return ""
+        if let urlString = self.alternateName.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
+            return urlString
+        } else {
+            return self.alternateName.replacingOccurrences(of: " ", with: "%20")
+        }
     }
 }
