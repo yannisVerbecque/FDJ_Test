@@ -75,5 +75,7 @@ extension AutoCompletionResultViewController: UITableViewDataSource {
 extension AutoCompletionResultViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.selectedLeague(league: self.filteredLeagues[indexPath.row])
+        presenter?.showAutoComplete(setValue: false)
+        presenter?.homeview.resignSearchBarFirstResponder()
     }
 }

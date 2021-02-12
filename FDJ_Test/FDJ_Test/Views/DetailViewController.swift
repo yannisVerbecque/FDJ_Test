@@ -59,7 +59,7 @@ class DetailViewController: UIViewController, DetailViewable {
     
     func setTeam(_ team: Team) {
         title = team.name
-        self.bannerImageView.image = UIImage.init(named: team.banner)
+        self.bannerImageView.image = UIImage.init(named: team.banner ?? "")
         self.countryLabel.text = team.country
         self.leagueLabel.text = team.league
         self.descriptionTextView.text = team.description

@@ -10,7 +10,7 @@ import Foundation
 struct Team: Decodable {
     let id: String
     let name: String
-    let banner: String
+    let banner: String?
     let country: String
     let league: String
     let badge: String

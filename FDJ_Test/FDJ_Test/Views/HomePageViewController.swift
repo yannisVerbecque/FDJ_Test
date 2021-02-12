@@ -11,9 +11,11 @@ import UIKit
 protocol HomeViewable: Viewable {
     func showAutoCompletion()
     func hideAutoCompletion()
+    func resignSearchBarFirstResponder()
+    func showTeams(teams: [Team])
 }
 
-class HomePageViewController: UIViewController, HomeViewable {
+class HomePageViewController: UIViewController {
     
     var searchBar: UISearchBar = {
         let bar = UISearchBar()
@@ -22,12 +24,19 @@ class HomePageViewController: UIViewController, HomeViewable {
         return bar
     }()
     
+    static let reuseIdentifier: String = "collectionViewCell"
     var collectionView: UICollectionView = {
-        let collectionViewLayout = UICollectionViewLayout()
+        let collectionViewLayout = UICollectionViewFlowLayout()
+        collectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        collectionViewLayout.itemSize = CGSize(width: 165, height: 165)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+        collectionView.register(TeamCollectionViewCell.self, forCellWithReuseIdentifier: HomePageViewController.reuseIdentifier)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
+    
+    var teams: [Team] = [Team]()
     
     var autoCompletionView: AutoCompletionResultViewController = {
        let autoCompletion = AutoCompletionResultViewController()
@@ -39,13 +48,6 @@ class HomePageViewController: UIViewController, HomeViewable {
     
     var presenter: HomePagePresenter?
     
-    func showAutoCompletion() {
-        self.autoCompletionView.view.isHidden = false
-    }
-    
-    func hideAutoCompletion() {
-        self.autoCompletionView.view.isHidden = true
-    }
     
     override func loadView() {
         super.loadView()
@@ -80,7 +82,7 @@ class HomePageViewController: UIViewController, HomeViewable {
             self.searchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             self.searchBar.heightAnchor.constraint(equalToConstant: 45),
-            self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            self.collectionView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
@@ -93,6 +95,28 @@ class HomePageViewController: UIViewController, HomeViewable {
     
 }
 
+extension HomePageViewController: HomeViewable {
+    
+    func showTeams(teams: [Team]) {
+        self.teams = teams
+        self.collectionView.reloadData()
+        print(teams)
+    }
+    
+    func showAutoCompletion() {
+        self.autoCompletionView.view.isHidden = false
+    }
+    
+    func hideAutoCompletion() {
+        self.autoCompletionView.view.isHidden = true
+    }
+    
+    func resignSearchBarFirstResponder() {
+        self.searchBar.resignFirstResponder()
+    }
+    
+}
+
 extension HomePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
@@ -100,11 +124,19 @@ extension HomePageViewController: UICollectionViewDelegate {
 
 extension HomePageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.teams.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageViewController.reuseIdentifier, for: indexPath) as! TeamCollectionViewCell
+        self.presenter?.getDataForTeamBadge(indexPath: indexPath, completion: { (data) in
+            if let data = data {
+                DispatchQueue.main.async {
+                    cell.imageView.image = UIImage(data: data)
+                }
+            }
+        })
+        return cell
     }
     
 }
@@ -134,11 +166,4 @@ extension HomePageViewController: UISearchBarDelegate {
         self.presenter?.gettingLeagueSearchText(text: searchText)
     }
     
-}
-
-extension HomePageViewController: UISearchControllerDelegate {
-    func didPresentSearchController(_ searchController: UISearchController) {
-    }
-    func didDismissSearchController(_ searchController: UISearchController) {
-    }
 }

@@ -20,6 +20,8 @@
 		0E5B05DA25D4A90F00D774F0 /* FDJ_TestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05D925D4A90F00D774F0 /* FDJ_TestUITests.swift */; };
 		0E5B05F725D4B0B800D774F0 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05F625D4B0B800D774F0 /* League.swift */; };
 		0E5B060025D4BB1F00D774F0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05FF25D4BB1F00D774F0 /* Team.swift */; };
+		0E7605E025D630D2007A709F /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7605DF25D630D2007A709F /* TeamManager.swift */; };
+		0E7605E525D64BFC007A709F /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7605E425D64BFC007A709F /* TeamCollectionViewCell.swift */; };
 		0EC1B2A825D4DF7C000ECD99 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC1B2A725D4DF7C000ECD99 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		0E5B05DB25D4A90F00D774F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E5B05F625D4B0B800D774F0 /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 		0E5B05FF25D4BB1F00D774F0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		0E7605DF25D630D2007A709F /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
+		0E7605E425D64BFC007A709F /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		0EC1B2A725D4DF7C000ECD99 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +97,7 @@
 			children = (
 				0E0DB14325D506E5005D77E9 /* DownloadManager.swift */,
 				0E0DB15025D52279005D77E9 /* LeagueManager.swift */,
+				0E7605DF25D630D2007A709F /* TeamManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 				0EC1B2A725D4DF7C000ECD99 /* DetailViewController.swift */,
 				0E0DB14825D50BA6005D77E9 /* HomePageViewController.swift */,
 				0E06894625D569F200087220 /* AutoCompletionResultViewController.swift */,
+				0E7605E425D64BFC007A709F /* TeamCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -316,6 +322,8 @@
 				0E5B05B525D4A90E00D774F0 /* AppDelegate.swift in Sources */,
 				0E0DB13F25D4EC76005D77E9 /* DetailPresenter.swift in Sources */,
 				0E06894725D569F200087220 /* AutoCompletionResultViewController.swift in Sources */,
+				0E7605E525D64BFC007A709F /* TeamCollectionViewCell.swift in Sources */,
+				0E7605E025D630D2007A709F /* TeamManager.swift in Sources */,
 				0E0DB14425D506E5005D77E9 /* DownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

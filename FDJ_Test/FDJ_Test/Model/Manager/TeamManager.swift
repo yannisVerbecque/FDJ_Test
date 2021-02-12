@@ -1,5 +1,5 @@
 //
-//  LeagueManager.swift
+//  TeamManager.swift
 //  FDJ_Test
 //
 //  Created by Yannis VERBECQUE on 11/02/2021.
@@ -7,15 +7,17 @@
 
 import Foundation
 
-class LeagueManager {
-    var leagues: [League] = [League]()
-    private var leaguesAPIEndpointString: String = "https://www.thesportsdb.com/api/v1/json/1/all_leagues.php"
+class TeamManager {
+    var teams: [Team] = [Team]()
+    private var teamAPIEndpointString: String = "https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php"
     
     // Download post and decode them from JSON to instantiate League object
-    func refreshLeagues(completion: @escaping (_ isCompleted: Bool) -> Void) {
+    func getTeamsByIDLeague(id: String, completion: @escaping (_ isCompleted: Bool) -> Void) {
+        let requestURLString: String = teamAPIEndpointString.appending("?id=\(id)")
+        
         do {
             
-            try DownloadManager.downloadWithURL(leaguesAPIEndpointString, completion: { [weak self] (data, response, error) in
+            try DownloadManager.downloadWithURL(requestURLString, completion: { [weak self] (data, response, error) in
                 guard error == nil else {
                     completion(false)
                     return
@@ -29,8 +31,8 @@ class LeagueManager {
                 do {
                     let decoder = JSONDecoder()
                     // throws: `DecodingError.dataCorrupted` if cannot decode JSON
-                    let leaguerequest: LeagueRequest = try decoder.decode(LeagueRequest.self, from: downloadedData)
-                    self?.leagues = leaguerequest.leagues
+                    let teamRequest: TeamRequest = try decoder.decode(TeamRequest.self, from: downloadedData)
+                    self?.teams = teamRequest.teams
                     completion(true)
                 } catch DecodingError.keyNotFound(let key, let context) {
                     Swift.print("could not find key \(key) in JSON: \(context.debugDescription)")
@@ -56,6 +58,6 @@ class LeagueManager {
             print("Unknown Error \(error) \(error.localizedDescription)")
             completion(false)
         }
+        
     }
-    
 }

@@ -13,9 +13,20 @@ protocol HomePageViewPresenter {
     func showAutoComplete(setValue: Bool)
     func updateAutoCompleteViewable(view: AutoCompletionViewable)
     func gettingLeagueSearchText(text: String)
+    func getDataForTeamBadge(indexPath: IndexPath, completion: @escaping (Data?) -> Void)
 }
 
 class HomePagePresenter: HomePageViewPresenter {
+    func getDataForTeamBadge(indexPath: IndexPath, completion: @escaping (Data?) -> Void) {
+        let badgeString = self.teamManager.teams[indexPath.row].badge
+        DispatchQueue.global().async {
+            if let url = URL(string: badgeString), let data = try? Data(contentsOf: url) {
+                completion(data)
+            }
+        }
+
+    }
+    
     func gettingLeagueSearchText(text: String) {
         var leaguesFiltered: [League] = self.leagueManager.leagues.filter({ $0.name.contains(text) })
         if (text.isEmpty || text.count == 0) {
@@ -27,11 +38,12 @@ class HomePagePresenter: HomePageViewPresenter {
     
     func updateAutoCompleteViewable(view: AutoCompletionViewable) {
         self.autocompletionview = view
+        self.autocompletionview?.updatePresenter(presenter: self)
     }
     
     // Model
     var leagueManager = LeagueManager()
-    // var teamManager = TeamManager()
+    var teamManager = TeamManager()
     
     // Views
     unowned let homeview: HomeViewable
@@ -50,7 +62,17 @@ class HomePagePresenter: HomePageViewPresenter {
     
     func selectedLeague(league: League) {
         self.selectedLeague = league
-        print(self.selectedLeague)
+        teamManager.getTeamsByIDLeague(id: league.id) { (didSucceed) in
+            if didSucceed {
+                DispatchQueue.main.async {
+                    self.homeview.showTeams(teams: self.teamManager.teams)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.homeview.showTeams(teams: [])
+                }
+            }
+        }
     }
     
     func showAutoComplete(setValue: Bool) {
