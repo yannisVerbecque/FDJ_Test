@@ -24,6 +24,7 @@ class DetailViewController: UIViewController, DetailViewable {
     var scrollView: UIScrollView = {
         let scrollView: UIScrollView = UIScrollView(frame: .zero)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentOffset = .zero
         return scrollView
     }()
     
@@ -50,6 +51,7 @@ class DetailViewController: UIViewController, DetailViewable {
         let textView: UITextView = UITextView(frame: .zero)
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.isEditable = false
+        textView.isSelectable = false
         textView.isScrollEnabled = false
         return textView
     }()
@@ -59,7 +61,13 @@ class DetailViewController: UIViewController, DetailViewable {
     
     func setTeam(_ team: Team) {
         title = team.name
-        self.bannerImageView.image = UIImage.init(named: team.banner ?? "")
+        self.presenter?.setBanner(completion: { (data) in
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.bannerImageView.image = UIImage(data: data)
+                }
+            }
+        })
         self.countryLabel.text = team.country
         self.leagueLabel.text = team.league
         self.descriptionTextView.text = team.description
@@ -78,8 +86,8 @@ class DetailViewController: UIViewController, DetailViewable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setConstraints()
         presenter?.getTeam()
+        self.setConstraints()
     }
     
     func setConstraints() {
@@ -88,21 +96,21 @@ class DetailViewController: UIViewController, DetailViewable {
             scrollView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             scrollView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.bannerImageView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor),
-            self.bannerImageView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor),
-            self.bannerImageView.topAnchor.constraint(equalTo: self.scrollView.topAnchor),
-            self.bannerImageView.heightAnchor.constraint(equalToConstant: 30),
-            self.countryLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: self.margin),
-            self.countryLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: -self.margin),
+            self.bannerImageView.leadingAnchor.constraint(equalTo: self.scrollView.safeAreaLayoutGuide.leadingAnchor),
+            self.bannerImageView.trailingAnchor.constraint(equalTo: self.scrollView.safeAreaLayoutGuide.trailingAnchor),
+            self.bannerImageView.topAnchor.constraint(equalTo: self.scrollView.safeAreaLayoutGuide.topAnchor),
+            self.bannerImageView.heightAnchor.constraint(equalToConstant: 90),
+            self.countryLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.margin),
+            self.countryLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -self.margin),
             self.countryLabel.topAnchor.constraint(equalTo: self.bannerImageView.bottomAnchor, constant: self.margin),
             self.countryLabel.heightAnchor.constraint(equalToConstant: 20),
-            self.leagueLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: self.margin),
-            self.leagueLabel.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: -self.margin),
+            self.leagueLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.margin),
+            self.leagueLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -self.margin),
             self.leagueLabel.topAnchor.constraint(equalTo: self.countryLabel.bottomAnchor, constant: self.margin),
             self.leagueLabel.heightAnchor.constraint(equalToConstant: 20),
             self.descriptionTextView.topAnchor.constraint(equalTo: self.leagueLabel.bottomAnchor, constant: self.margin),
-            self.descriptionTextView.leadingAnchor.constraint(equalTo: self.scrollView.leadingAnchor, constant: self.margin),
-            self.descriptionTextView.trailingAnchor.constraint(equalTo: self.scrollView.trailingAnchor, constant: -self.margin),
+            self.descriptionTextView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: self.margin),
+            self.descriptionTextView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -self.margin),
             self.descriptionTextView.bottomAnchor.constraint(equalTo: self.scrollView.bottomAnchor),
         ])
     }

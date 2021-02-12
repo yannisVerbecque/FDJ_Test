@@ -10,9 +10,11 @@ import Foundation
 protocol DetailViewPresenter {
     init(view: DetailViewable, team: Team)
     func getTeam()
+    func setBanner(completion: @escaping (Data?) -> Void)
 }
 
 class DetailPresenter: DetailViewPresenter {
+    
     unowned let view: DetailViewable
     let team: Team
     
@@ -25,5 +27,14 @@ class DetailPresenter: DetailViewPresenter {
         self.team = team
     }
     
-    
+    func setBanner(completion: @escaping (Data?) -> Void) {
+        if let bannerString = self.team.banner {
+            DispatchQueue.global().async {
+                if let url = URL(string: bannerString), let data = try? Data(contentsOf: url) {
+                    completion(data)
+                }
+            }
+        }
+    }
+
 }

@@ -100,7 +100,6 @@ extension HomePageViewController: HomeViewable {
     func showTeams(teams: [Team]) {
         self.teams = teams
         self.collectionView.reloadData()
-        print(teams)
     }
     
     func showAutoCompletion() {

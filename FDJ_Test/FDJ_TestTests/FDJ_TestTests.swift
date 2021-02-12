@@ -11,6 +11,7 @@ import XCTest
 class FDJ_TestTests: XCTestCase {
 
     func testNameSearch() {
-        let league = League(id: "", name: "", alternateName: "", sport: "")
+        let league = League(id: "", name: "Ligue 1", alternateName: "Ligue Uber Eats", sport: "")
+        league.doesLeagueNameContain(name: <#T##String#>)
     }
 }
