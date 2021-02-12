@@ -15,7 +15,6 @@ protocol HomePageViewPresenter {
     func gettingLeagueSearchText(text: String)
     func getDataForTeamBadge(indexPath: IndexPath, completion: @escaping (Data?) -> Void)
     func getTeamAtIndex(indexPath: IndexPath) -> Team
-//    func transitionToDetailTeamView(team: Team)
 }
 
 class HomePagePresenter: HomePageViewPresenter {
@@ -91,10 +90,5 @@ class HomePagePresenter: HomePageViewPresenter {
         }
     }
     
-//    func transitionToDetailTeamView(team: Team) {
-//        let detailVC = DetailViewController()
-//        let detailPresenter = DetailPresenter(view: detailVC, team: team)
-//        detailVC.presenter = detailPresenter
-//    }
 }
 
