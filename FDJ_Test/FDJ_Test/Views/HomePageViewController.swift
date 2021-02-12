@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 protocol HomeViewable: Viewable {
+    func showAutoCompletion()
+    func hideAutoCompletion()
 }
 
 class HomePageViewController: UIViewController, HomeViewable {
@@ -27,7 +29,23 @@ class HomePageViewController: UIViewController, HomeViewable {
         return collectionView
     }()
     
-    var presenter: HomePageViewPresenter!
+    var autoCompletionView: AutoCompletionResultViewController = {
+       let autoCompletion = AutoCompletionResultViewController()
+        autoCompletion.view.translatesAutoresizingMaskIntoConstraints = false
+        autoCompletion.view.backgroundColor = .red
+        autoCompletion.view.isHidden = true
+        return autoCompletion
+    }()
+    
+    var presenter: HomePagePresenter?
+    
+    func showAutoCompletion() {
+        self.autoCompletionView.view.isHidden = false
+    }
+    
+    func hideAutoCompletion() {
+        self.autoCompletionView.view.isHidden = true
+    }
     
     override func loadView() {
         super.loadView()
@@ -43,25 +61,33 @@ class HomePageViewController: UIViewController, HomeViewable {
         self.searchBar.placeholder = "Search for a league"
         self.searchBar.delegate = self
         self.view.addSubview(self.searchBar)
+        
+        self.autoCompletionView.view.translatesAutoresizingMaskIntoConstraints = false
+        self.presenter?.updateAutoCompleteViewable(view: self.autoCompletionView)
+        self.view.addSubview(self.autoCompletionView.view)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setConstraints()
-        
-        presenter.getLeagues()
+        presenter?.getLeagues()
     }
     
     func setConstraints() {
         NSLayoutConstraint.activate([
+            self.searchBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             self.searchBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             self.searchBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.searchBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            self.collectionView.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor),
+            self.searchBar.heightAnchor.constraint(equalToConstant: 45),
+            self.collectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+            self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            self.autoCompletionView.view.topAnchor.constraint(equalTo: self.searchBar.bottomAnchor),
+            self.autoCompletionView.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            self.autoCompletionView.view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            self.autoCompletionView.view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ])
     }
     
@@ -85,6 +111,8 @@ extension HomePageViewController: UICollectionViewDataSource {
 
 extension HomePageViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        self.presenter?.showAutoComplete(setValue: true)
+        self.presenter?.gettingLeagueSearchText(text: searchBar.searchTextField.text ?? "")
         searchBar.setShowsCancelButton(!searchBar.showsCancelButton, animated: true)
     }
     
@@ -92,11 +120,18 @@ extension HomePageViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.searchTextField.resignFirstResponder()
+        searchBar.setShowsCancelButton(!searchBar.showsCancelButton, animated: true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.presenter?.showAutoComplete(setValue: false)
         searchBar.searchTextField.resignFirstResponder()
         searchBar.setShowsCancelButton(!searchBar.showsCancelButton, animated: true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.presenter?.gettingLeagueSearchText(text: searchText)
     }
     
 }

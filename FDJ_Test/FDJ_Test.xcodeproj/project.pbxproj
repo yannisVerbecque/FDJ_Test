@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E06894725D569F200087220 /* AutoCompletionResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06894625D569F200087220 /* AutoCompletionResultViewController.swift */; };
 		0E0DB13F25D4EC76005D77E9 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DB13E25D4EC76005D77E9 /* DetailPresenter.swift */; };
 		0E0DB14425D506E5005D77E9 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DB14325D506E5005D77E9 /* DownloadManager.swift */; };
 		0E0DB14925D50BA6005D77E9 /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E0DB14825D50BA6005D77E9 /* HomePageViewController.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E06894625D569F200087220 /* AutoCompletionResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoCompletionResultViewController.swift; sourceTree = "<group>"; };
 		0E0DB13E25D4EC76005D77E9 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
 		0E0DB14325D506E5005D77E9 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		0E0DB14825D50BA6005D77E9 /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 			children = (
 				0EC1B2A725D4DF7C000ECD99 /* DetailViewController.swift */,
 				0E0DB14825D50BA6005D77E9 /* HomePageViewController.swift */,
+				0E06894625D569F200087220 /* AutoCompletionResultViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				0E0DB14925D50BA6005D77E9 /* HomePageViewController.swift in Sources */,
 				0E5B05B525D4A90E00D774F0 /* AppDelegate.swift in Sources */,
 				0E0DB13F25D4EC76005D77E9 /* DetailPresenter.swift in Sources */,
+				0E06894725D569F200087220 /* AutoCompletionResultViewController.swift in Sources */,
 				0E0DB14425D506E5005D77E9 /* DownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

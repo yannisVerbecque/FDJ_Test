@@ -55,7 +55,7 @@ class DetailViewController: UIViewController, DetailViewable {
     }()
     
     let margin: CGFloat = 8.0
-    var presenter: DetailViewPresenter!
+    var presenter: DetailViewPresenter?
     
     func setTeam(_ team: Team) {
         title = team.name

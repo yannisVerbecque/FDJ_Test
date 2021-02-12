@@ -20,8 +20,23 @@ struct League: Decodable {
         case sport = "strSport"
     }
     
+    func doesLeagueNameContain(name: String) -> Bool {
+        if let name = self.alternateName {
+            if name.contains(name) {
+                return true
+            }
+        }
+        if self.name.contains(name) {
+            return true
+        }
+        return false
+    }
 }
 
 struct LeagueRequest: Decodable {
     let leagues: [League]
+    
+    func filterWithLeagueName(name: String) -> [League] {
+        return leagues.filter({ $0.doesLeagueNameContain(name: name) })
+    }
 }
