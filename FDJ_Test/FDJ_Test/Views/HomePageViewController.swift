@@ -119,6 +119,12 @@ extension HomePageViewController: HomeViewable {
 
 extension HomePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let team: Team = self.presenter?.getTeamAtIndex(indexPath: indexPath) {
+            let detailVC = DetailViewController()
+            let detailPresenter = DetailPresenter(view: detailVC, team: team)
+            detailVC.presenter = detailPresenter
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
 

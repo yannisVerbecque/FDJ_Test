@@ -68,7 +68,7 @@ class DetailViewController: UIViewController, DetailViewable {
     // MARK: UI Work
     override func loadView() {
         super.loadView()
-        
+        self.view.backgroundColor = .white
         self.view.addSubview(self.scrollView)
         self.scrollView.addSubview(self.bannerImageView)
         self.scrollView.addSubview(self.countryLabel)
@@ -79,6 +79,7 @@ class DetailViewController: UIViewController, DetailViewable {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setConstraints()
+        presenter?.getTeam()
     }
     
     func setConstraints() {

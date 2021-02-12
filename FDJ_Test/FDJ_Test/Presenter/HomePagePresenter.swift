@@ -14,9 +14,31 @@ protocol HomePageViewPresenter {
     func updateAutoCompleteViewable(view: AutoCompletionViewable)
     func gettingLeagueSearchText(text: String)
     func getDataForTeamBadge(indexPath: IndexPath, completion: @escaping (Data?) -> Void)
+    func getTeamAtIndex(indexPath: IndexPath) -> Team
+//    func transitionToDetailTeamView(team: Team)
 }
 
 class HomePagePresenter: HomePageViewPresenter {
+    
+    // Model
+    var leagueManager = LeagueManager()
+    var teamManager = TeamManager()
+    
+    // Views
+    unowned let homeview: HomeViewable
+    unowned var autocompletionview: AutoCompletionViewable? = nil
+    var selectedLeague: League?
+    
+    internal init(leagueManager: LeagueManager = LeagueManager(), view: HomeViewable) {
+        self.leagueManager = leagueManager
+        self.homeview = view
+    }
+    
+    
+    func getTeamAtIndex(indexPath: IndexPath) -> Team {
+        return self.teamManager.teams[indexPath.row]
+    }
+    
     func getDataForTeamBadge(indexPath: IndexPath, completion: @escaping (Data?) -> Void) {
         let badgeString = self.teamManager.teams[indexPath.row].badge
         DispatchQueue.global().async {
@@ -40,21 +62,7 @@ class HomePagePresenter: HomePageViewPresenter {
         self.autocompletionview = view
         self.autocompletionview?.updatePresenter(presenter: self)
     }
-    
-    // Model
-    var leagueManager = LeagueManager()
-    var teamManager = TeamManager()
-    
-    // Views
-    unowned let homeview: HomeViewable
-    unowned var autocompletionview: AutoCompletionViewable? = nil
-    var selectedLeague: League?
-    
-    internal init(leagueManager: LeagueManager = LeagueManager(), view: HomeViewable) {
-        self.leagueManager = leagueManager
-        self.homeview = view
-    }
-    
+
     func getLeagues() {
         leagueManager.refreshLeagues { (didSucceed) in
         }
@@ -82,5 +90,11 @@ class HomePagePresenter: HomePageViewPresenter {
             self.homeview.hideAutoCompletion()
         }
     }
+    
+//    func transitionToDetailTeamView(team: Team) {
+//        let detailVC = DetailViewController()
+//        let detailPresenter = DetailPresenter(view: detailVC, team: team)
+//        detailVC.presenter = detailPresenter
+//    }
 }
 
