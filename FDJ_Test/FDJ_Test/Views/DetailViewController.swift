@@ -59,6 +59,7 @@ class DetailViewController: UIViewController, DetailViewable {
     let margin: CGFloat = 8.0
     var presenter: DetailViewPresenter?
     
+    // Set team information in the view
     func setTeam(_ team: Team) {
         title = team.name
         self.presenter?.setBanner(completion: { (data) in

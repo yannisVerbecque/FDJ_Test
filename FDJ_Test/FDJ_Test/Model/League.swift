@@ -20,13 +20,14 @@ struct League: Decodable {
         case sport = "strSport"
     }
     
+    // return true if name of league or alternate name contains text input
     func doesLeagueNameContain(name: String) -> Bool {
-        if let name = self.alternateName {
-            if name.contains(name) {
+        if let safeName = self.alternateName {
+            if safeName.lowercased().contains(name.lowercased()) {
                 return true
             }
         }
-        if self.name.contains(name) {
+        if self.name.lowercased().contains(name.lowercased()) {
             return true
         }
         return false
@@ -36,6 +37,7 @@ struct League: Decodable {
 struct LeagueRequest: Decodable {
     let leagues: [League]
     
+    // return all matching league with name included
     func filterWithLeagueName(name: String) -> [League] {
         return leagues.filter({ $0.doesLeagueNameContain(name: name) })
     }

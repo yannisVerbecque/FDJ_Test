@@ -17,8 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let window = UIWindow.init(frame: UIScreen.main.bounds)
 
+        // Adding the View
         let homePageView = HomePageViewController()
+        // Adding the presenter
         let homePresenter = HomePagePresenter(view: homePageView)
+        // Setting view.presenter to presenter
         homePageView.presenter = homePresenter
         let navViewController = UINavigationController(rootViewController: homePageView)
         navViewController.view.translatesAutoresizingMaskIntoConstraints = false

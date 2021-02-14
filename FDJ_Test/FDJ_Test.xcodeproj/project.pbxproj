@@ -22,6 +22,7 @@
 		0E5B060025D4BB1F00D774F0 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B05FF25D4BB1F00D774F0 /* Team.swift */; };
 		0E7605E025D630D2007A709F /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7605DF25D630D2007A709F /* TeamManager.swift */; };
 		0E7605E525D64BFC007A709F /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7605E425D64BFC007A709F /* TeamCollectionViewCell.swift */; };
+		0E7605EA25D8CE2A007A709F /* LeagueManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7605E925D8CE2A007A709F /* LeagueManagerTests.swift */; };
 		0EC1B2A825D4DF7C000ECD99 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EC1B2A725D4DF7C000ECD99 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		0E5B05FF25D4BB1F00D774F0 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		0E7605DF25D630D2007A709F /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
 		0E7605E425D64BFC007A709F /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
+		0E7605E925D8CE2A007A709F /* LeagueManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueManagerTests.swift; sourceTree = "<group>"; };
 		0EC1B2A725D4DF7C000ECD99 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				0E5B05CE25D4A90F00D774F0 /* FDJ_TestTests.swift */,
+				0E7605E925D8CE2A007A709F /* LeagueManagerTests.swift */,
 				0E5B05D025D4A90F00D774F0 /* Info.plist */,
 			);
 			path = FDJ_TestTests;
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E7605EA25D8CE2A007A709F /* LeagueManagerTests.swift in Sources */,
 				0E5B05CF25D4A90F00D774F0 /* FDJ_TestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

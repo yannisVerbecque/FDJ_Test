@@ -32,6 +32,8 @@ class TeamCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // prepare for reuse to recycle the view
+    // to use new data without displaying old data
     override func prepareForReuse() {
         super.prepareForReuse()
         imageView.image = nil

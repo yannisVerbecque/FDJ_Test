@@ -33,11 +33,12 @@ class HomePagePresenter: HomePageViewPresenter {
         self.homeview = view
     }
     
-    
+    // Get the team at index
     func getTeamAtIndex(indexPath: IndexPath) -> Team {
         return self.teamManager.teams[indexPath.row]
     }
     
+    // Get the data asynchronously to be ready to use by uiimage in the view
     func getDataForTeamBadge(indexPath: IndexPath, completion: @escaping (Data?) -> Void) {
         let badgeString = self.teamManager.teams[indexPath.row].badge
         DispatchQueue.global().async {
@@ -48,6 +49,7 @@ class HomePagePresenter: HomePageViewPresenter {
 
     }
     
+    // Filter League by name and show them to auto completion view
     func gettingLeagueSearchText(text: String) {
         var leaguesFiltered: [League] = self.leagueManager.leagues.filter({ $0.name.contains(text) })
         if (text.isEmpty || text.count == 0) {
@@ -62,11 +64,13 @@ class HomePagePresenter: HomePageViewPresenter {
         self.autocompletionview?.updatePresenter(presenter: self)
     }
 
+    // Download leagues for later use in league auto completion
     func getLeagues() {
         leagueManager.refreshLeagues { (didSucceed) in
         }
     }
     
+    // Select a league, download the teams, display them in collection view
     func selectedLeague(league: League) {
         self.selectedLeague = league
         teamManager.getTeamsByIDLeague(id: league.id) { (didSucceed) in
@@ -82,6 +86,7 @@ class HomePagePresenter: HomePageViewPresenter {
         }
     }
     
+    // Decide if should show/hide auto completion view
     func showAutoComplete(setValue: Bool) {
         if setValue {
             self.homeview.showAutoCompletion()

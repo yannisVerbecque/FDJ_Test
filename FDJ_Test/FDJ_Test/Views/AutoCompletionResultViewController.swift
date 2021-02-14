@@ -52,6 +52,7 @@ class AutoCompletionResultViewController: UIViewController, AutoCompletionViewab
         ])
     }
     
+    // show the leagues and reload the result tableview
     func showLeagues(leagues: [League]) {
         self.filteredLeagues = leagues
         self.tableview.reloadData()
@@ -73,6 +74,8 @@ extension AutoCompletionResultViewController: UITableViewDataSource {
 }
 
 extension AutoCompletionResultViewController: UITableViewDelegate {
+    // When selecting a league, removing autocomplete view
+    // resigning search bar focus
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.selectedLeague(league: self.filteredLeagues[indexPath.row])
         presenter?.showAutoComplete(setValue: false)

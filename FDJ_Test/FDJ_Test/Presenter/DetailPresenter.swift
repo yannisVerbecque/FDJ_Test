@@ -18,6 +18,7 @@ class DetailPresenter: DetailViewPresenter {
     unowned let view: DetailViewable
     let team: Team
     
+    // Fill detail view with a team
     func getTeam() {
         self.view.setTeam(self.team)
     }
@@ -27,6 +28,7 @@ class DetailPresenter: DetailViewPresenter {
         self.team = team
     }
     
+    // Download asynchronously the data for the uiimage in the detail view to display
     func setBanner(completion: @escaping (Data?) -> Void) {
         if let bannerString = self.team.banner {
             DispatchQueue.global().async {

@@ -117,6 +117,8 @@ extension HomePageViewController: HomeViewable {
 }
 
 extension HomePageViewController: UICollectionViewDelegate {
+    // when selected, pushing the controller to transition to detail view
+    // setting the view and presenter
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let team: Team = self.presenter?.getTeamAtIndex(indexPath: indexPath) {
             let detailVC = DetailViewController()
@@ -128,10 +130,12 @@ extension HomePageViewController: UICollectionViewDelegate {
 }
 
 extension HomePageViewController: UICollectionViewDataSource {
+    // display all teams
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.teams.count
     }
     
+    // display team badge by image being downloaded asynchronously
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomePageViewController.reuseIdentifier, for: indexPath) as! TeamCollectionViewCell
         self.presenter?.getDataForTeamBadge(indexPath: indexPath, completion: { (data) in
@@ -147,6 +151,7 @@ extension HomePageViewController: UICollectionViewDataSource {
 }
 
 extension HomePageViewController: UISearchBarDelegate {
+    // start showing the autocomplete
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.presenter?.showAutoComplete(setValue: true)
         self.presenter?.gettingLeagueSearchText(text: searchBar.searchTextField.text ?? "")
@@ -161,12 +166,14 @@ extension HomePageViewController: UISearchBarDelegate {
         searchBar.setShowsCancelButton(!searchBar.showsCancelButton, animated: true)
     }
     
+    // When cancelling the search remove autocmomlpte and search bar resign first responder
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.presenter?.showAutoComplete(setValue: false)
         searchBar.searchTextField.resignFirstResponder()
         searchBar.setShowsCancelButton(!searchBar.showsCancelButton, animated: true)
     }
     
+    // update the league list to update depending on the user's search text input
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.presenter?.gettingLeagueSearchText(text: searchText)
     }
